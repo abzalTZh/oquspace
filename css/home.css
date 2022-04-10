@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #EDF6F9;
+}
+
+@media (min-width: 1400px) .container {
+  max-width: 1320px;
+}
+
+@media (min-width: 1200px) .container {
+  max-width: 1140px;
+}
+
+@media (min-width: 992px) .container {
+  max-width: 960px;
+}
+
+@media (min-width: 768px) .container {
+  max-width: 720px;
+}
+
+@media (min-width: 576px) .container {
+  max-width: 540px;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-nav > li {
+  padding-left: 30px;
+  padding-right: 15px;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.head-content {
+  position: relative;
+  background-color: #83C5BE;
+  min-height: 100vh;
+}
+
+.page-desc {
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  left: 32vw;
+  transform: translate(-25vw, -50%);
+}
+
+.page-desc-logo {
+  width: 18rem;
+}
+
+.page-desc h2 {
+  font-weight: 300;
+  line-height: 40px;
+}
+
+.navbar-brand img {
+  height: 3.5rem;
+  padding-left: 30px;
+  padding-right: 7px;
+}
+
+.desc-img {
+  max-width: 48rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(10vw, -50%);
+}
+
+.desc-img img {
+  width:50vw;
+  justify-content: center;
+}
+
+.page-desc a {
+  color: black;
+  text-decoration: none;
+}
+
+.page-desc a:hover {
+  color: #EDF6F9;
+}
+
+.log-in-link {
+  font-weight: 700 !important;
+}
+
+.page-desc button {
+  transform: translate(8vw, -6vh);
+  width: 12vw;
+  height: 5vh;
+}
+
+.sign-up-link {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top:50%;
+  left:50%;
+  width: 8vw;
+}
+
+.courses-section {
+  padding-top: 5vh;
+}
+
+.courses-desc {
+  text-align: left;
+  max-width: 35rem;
+}
+
+.courses-desc h1 {
+  font-weight: 700;
+}
+
+.course-container {
+  width: 20vw;
+  height: 23vh;
+  background: #99cccc;
+  border-radius: 6px;
+}
+
+.course-container img {
+  width:5vw;
+  padding-bottom: 5vh;
+}
+
+.course-name {
+  font-size: 1.5rem;
+  color: black;
+  font-weight: 700;
+  text-align: center;
+  padding-top: 14vh;
+}
+
+.course-container img, .course-name {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
+.sec-half {
+  padding-top: 5vh;
+}
+
+.teachers-section {
+  padding-top: 5vh;
+}
+
+.teach-desc {
+  text-align: left;
+  max-width: 35rem;
+}
+
+.teach-desc h1 {
+  font-weight: 700;
+}
+
+.teachers {
+  padding-top: 7vh;
+}
+
+.circle-border {
+  height: 40vh;
+  width: 40vh;
+  border-radius: 100%;
+  border-width: 10px;
+  border-color: grey;
+  border-style: solid;
+  background-color: white;
+}
+
+.avatar {
+  margin-bottom: 5vh;
+}
+
+.avatar-img {
+  max-width: 70%;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 1.3rem;
+  padding-bottom: 7vh;
+}
+
+.teacher-column {
+  max-width: 18vw;
+}
+
+.more-teachers {
+  text-align: center;
+  background: white;
+  width: 45vw;
+  height: 6vh;
+  border-radius: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* .teachers-section::after {
+  content: "";
+  position: absolute;
+  top:230%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width:75%;
+  height:0.4%;
+  background: black;
+} */
+
+.consulting-section {
+  padding-top: 13vh;
+}
+
+.consult-desc {
+  text-align: left;
+  max-width: 35rem;
+}
+
+.consult-desc h1 {
+  font-weight: 700;
+}
+
+form {
+  padding-top: 3vh;
+  margin-bottom: 5vh;
+}
+
+footer {
+  background: black;
+  height: 25vh;
+  padding-left: 0vw;
+  padding-top: 2vh;
+}
+
+footer img {
+  filter: invert(100%);
+  width: 13%;
+  position: absolute;
+  top: 155vh;
+  padding-top: 4vh;
+}
+
+footer h3 {
+  color: white;
+  text-align: left;
+}
+
+footer h3::after {
+  content: "";
+  position: absolute;
+  left: 50vw;
+  transform: translate(-45vw, 5vh);
+  width: 85vw;
+  height: 0.3%;
+  background: #83C5BE;
+}
+
+#adress {
+  color: grey;
+  position: absolute;
+  transform: translate(0vw, -10vh);
+  left: 40vw;
+  top:160vh;
+}
+
+#contacts {
+  color: white;
+  position: absolute;
+  transform: translate(0, -10vh);
+  left: 75vw;
+  top: 160vh;
+}
+
+footer p {
+  padding-top: 7vh;
+}
