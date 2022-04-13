@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background: #EDF6F9;
+}
+
+@media (min-width: 1400px) .container {
+    max-width: 1320px;
+}
+
+@media (min-width: 1200px) .container {
+    max-width: 1140px;
+}
+
+@media (min-width: 992px) .container {
+    max-width: 960px;
+}
+
+@media (min-width: 768px) .container {
+    max-width: 720px;
+}
+
+@media (min-width: 576px) .container {
+    max-width: 540px;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.navbar-nav>li {
+    padding-left: 30px;
+    padding-right: 15px;
+}
+
+.navbar-brand img {
+    height: 3.5rem;
+    padding-left: 30px;
+    padding-right: 7px;
+}
+
+#teacher-avi {
+    width: 450px;
+    height: 520px;
+    background: white;
+    border-radius: 60px;
+}
