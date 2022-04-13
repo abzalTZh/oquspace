@@ -47,8 +47,52 @@ body {
 }
 
 #teacher-avi {
-    width: 450px;
     height: 520px;
     background: white;
     border-radius: 60px;
+    background-image: url(../img-s/woman-avi.jpg);
+    background-size: 143%;
+    background-position: center;
+}
+
+.teacher-desc {
+    width: 410px;
+    background: white;
+    border-radius: 15px;
+}
+
+.info-header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.info-content {
+    align-items: center;
+    padding-top: 20px;
+    width: 370px;
+    padding-left: 30px;
+    line-height: 1.5;
+}
+
+.education-li-head {
+    font-weight: 700;
+}
+
+.contact-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    margin-right: 20px;
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+
+footer {
+    background: black;
+    height: 25vh;
+    padding-top: 20px;
 }
