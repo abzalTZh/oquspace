@@ -1,111 +1,91 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
 * {
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-html, body {
-  background: #EDF6F9;
-}
-
-@media (min-width: 1400px) .container {
-  max-width: 1320px;
-}
-
-@media (min-width: 1200px) .container {
-  max-width: 1140px;
-}
-
-@media (min-width: 992px) .container {
-  max-width: 960px;
-}
-
-@media (min-width: 768px) .container {
-  max-width: 720px;
-}
-
-@media (min-width: 576px) .container {
-  max-width: 540px;
+html,
+body {
+    background: #EDF6F9;
 }
 
 .navbar-nav {
-  margin-left: auto;
+    margin-left: auto;
 }
 
-.navbar-nav > li {
-  padding-left: 30px;
-  padding-right: 15px;
+.navbar-nav>li {
+    padding-left: 30px;
+    padding-right: 15px;
 }
 
 .navbar-brand img {
-  height: 3.5rem;
-  padding-left: 30px;
-  padding-right: 7px;
+    height: 3.5rem;
+    padding-left: 30px;
+    padding-right: 7px;
 }
 
 .courses-container {
-  position: absolute;
-  padding-left: 60px;
-  padding-top: 30px;
+    position: absolute;
+    padding-left: 60px;
+    padding-top: 30px;
 }
 
 .courses-overview {
-  width: 325px;
-  background: white;
-  border-color: #D1D1D1;
-  border-radius: 20px;
-  border-style: solid;
-  border-width: 1px;
-  position: absolute;
-  padding-bottom: 10px;
-  padding-top: 10px;
+    width: 325px;
+    background: white;
+    border-color: #D1D1D1;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .title {
-  text-align: center;
-  font-weight: 700;
-  font-size: 36px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
 }
 
 .course-name-container {
-  padding-top: 30px;
-  margin-bottom: 230px;
+    padding-top: 30px;
+    margin-bottom: 230px;
 }
 
 .courses-title {
-  font-size: 24px;
-  padding-left: 28px;
-  line-height: 1.5;
+    font-size: 24px;
+    padding-left: 28px;
+    line-height: 1.5;
 }
 
 .coursename-overview {
-  width: 940px;
-  background: white;
-  border-color: #D1D1D1;
-  border-radius: 20px;
-  border-style: solid;
-  border-width: 1px;
-  position: absolute;
-  padding-bottom: 10px;
-  padding-top: 10px;
+    width: 940px;
+    background: white;
+    border-color: #D1D1D1;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .coursename-title {
-  text-align: center;
-  font-size: 36px;
-  font-weight: 700;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
 }
 
 .sectionname-title {
-  font-size: 24px;
-  line-height: 1.5;
-  padding-left: 28px;
+    font-size: 24px;
+    line-height: 1.5;
+    padding-left: 28px;
 }
 
 footer {
-  background: black;
-  height: 25vh;
+    background: black;
+    height: 25vh;
 }
