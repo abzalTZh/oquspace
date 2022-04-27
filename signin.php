@@ -2,9 +2,15 @@
 	session_start();
 	?>
 
-	<?php require_once("includes/connection.php"); ?> 
 	<?php
-	
+	// Mysqli database connection
+$conn = mysqli_connect("localhost", "root", "", "databasename");
+
+// Check if connection established 
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
 	if(isset($_SESSION["session_username"])){
 	// вывод "Session is set"; // в целях проверки
 	header("Location: profile.php");
@@ -15,14 +21,14 @@
 	if(!empty($_POST['username']) && !empty($_POST['password'])) {
 	$username=htmlspecialchars($_POST['username']);
 	$password=htmlspecialchars($_POST['password']);
-	$query =mysqli_query("SELECT * FROM users WHERE username='".$username."' AND password='".$password."'");
+	$query =mysqli_query($conn, "SELECT * FROM users WHERE username=$username AND password=$password");
 	$numrows=mysqli_num_rows($query);
-	if($numrows!=0)
- {
-while($row=mysqli_fetch_assoc($query))
- {
+	if($numrows>0)
+    {
+        while($row=mysqli_fetch_assoc($query))
+    {
 	$dbusername=$row['username'];
-  $dbpassword=$row['password'];
+    $dbpassword=$row['password'];
  }
   if($username == $dbusername && $password == $dbpassword)
  {
