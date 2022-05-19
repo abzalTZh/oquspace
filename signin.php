@@ -1,57 +1,66 @@
+<?php require_once("includes/connection.php"); ?>
+
 <?php
-	session_start();
-	?>
-
-	<?php
-	// Mysqli database connection
-$conn = mysqli_connect("localhost", "root", "", "databasename");
-
-// Check if connection established 
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
-
-	if(isset($_SESSION["session_username"])){
+if(isset($_SESSION["session_username"])){
 	// вывод "Session is set"; // в целях проверки
 	header("Location: profile.php");
 	}
 
-	if(isset($_POST["login"])){
+// Функция для генерации случайной строки
+function generateCode($length=6) {
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789";
+    $code = "";
+    $clen = strlen($chars) - 1;
+    while (strlen($code) < $length) {
+            $code .= $chars[mt_rand(0,$clen)];
+    }
+    return $code;
+}
 
-	if(!empty($_POST['username']) && !empty($_POST['password'])) {
-	$username=htmlspecialchars($_POST['username']);
-	$password=htmlspecialchars($_POST['password']);
-	$query =mysqli_query($conn, "SELECT * FROM users WHERE username=$username AND password=$password");
-	$numrows=mysqli_num_rows($query);
-	if($numrows>0)
+// Соединямся с БД
+$link=mysqli_connect("localhost", "root", "", "oqu_space");
+
+if(isset($_POST['submit']))
+{
+    // Вытаскиваем из БД запись, у которой логин равняеться введенному
+    $query = mysqli_query($link,"SELECT id, password FROM users WHERE username='".mysqli_real_escape_string($link,$_POST['username'])."' LIMIT 1");
+    $data = mysqli_fetch_assoc($query);
+
+    // Сравниваем пароли
+    if($data['password'] === md5(md5($_POST['password'])))
     {
-        while($row=mysqli_fetch_assoc($query))
+        // Генерируем случайное число и шифруем его
+        $hash = md5(generateCode(10));
+
+        if(!empty($_POST['not_attach_ip']))
+        {
+            // Если пользователя выбрал привязку к IP
+            // Переводим IP в строку
+            $insip = ", user_ip=INET_ATON('".$_SERVER['REMOTE_ADDR']."')";
+        }
+
+        // Записываем в БД новый хеш авторизации и IP
+        mysqli_query($link, "UPDATE users SET user_hash='".$hash."' ".$insip." WHERE id='".$data['user_id']."'");
+
+        // Ставим куки
+        setcookie("id", $data['id'], time()+60*60*24*30, "/");
+        setcookie("hash", $hash, time()+60*60*24*30, "/", null, null, true); // httponly !!!
+
+        // Переадресовываем браузер на страницу проверки нашего скрипта
+        header("Location: profile.php"); exit();
+    }
+    else
     {
-	$dbusername=$row['username'];
-    $dbpassword=$row['password'];
- }
-  if($username == $dbusername && $password == $dbpassword)
- {
-	// старое место расположения
-	//  session_start();
-	 $_SESSION['session_username']=$username;	 
- /* Перенаправление браузера */
-   header("Location: index.php");
-	}
-	} else {
-	//  $message = "Invalid username or password!";
-	
-	echo  "Invalid username or password!";
- }
-	} else {
-    $message = "All fields are required!";
-	}
-	}
-	?>
+        print "Username or password is incorrect";
+    }
+}
+?>
 
 <html>
 <head>
     <link rel="stylesheet" href="../css/signup.css">
+    <link rel="shortcut icon" href="img-s/oquspace.ico" type="image/x-icon" />
+    <title>Sign In</title>
     <style>
         .b {
             visibility: hidden;
@@ -83,7 +92,7 @@ if (!$conn) {
                 <span></span>
                 <span></span>
                 <span></span>
-                <button type="submit" name="login" id="login-btn" class="btttn">Log In</button>
+                <button type="submit" name="submit" id="login-btn" class="btttn">Log In</button>
             </a>
         </form>
 </body>

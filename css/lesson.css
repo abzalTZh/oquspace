@@ -27,50 +27,48 @@
     margin-bottom: 2%;
 }
 
+#video {
+    width: 101%;
+}
+
+#title {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+}
+
 footer {
     background: black;
     height: 25vh;
 }
 
-footer img {
-    filter: invert(100%);
-    width: 13%;
-    position: absolute;
-    top: 100%;
-    padding-top: 4%;
-}
-
 footer h3 {
     color: white;
     text-align: left;
+    padding-top: 1.5%;
 }
 
 footer h3::after {
     content: "";
     position: absolute;
-    left: 50vw;
+    left: 50%;
     transform: translate(-45vw, 5vh);
-    width: 85vw;
+    width: 85%;
     height: 0.3%;
     background: #83C5BE;
 }
 
 #adress {
-    color: grey;
+    color: white !important;
     position: absolute;
-    transform: translate(0vw, -10vh);
-    left: 40vw;
-    top: 160vh;
+    left: 15%;
 }
 
 #contacts {
     color: white;
     position: absolute;
-    transform: translate(0, -10vh);
-    left: 75vw;
-    top: 160vh;
+    left: 65%;
 }
 
 footer p {
-    padding-top: 7vh;
+    padding-top: 2%;
 }

@@ -39,7 +39,7 @@ body {
     border-radius: 20px;
     border-style: solid;
     border-width: 1px;
-    position: absolute;
+    position: fixed;
     padding-bottom: 10px;
     padding-top: 10px;
 }
@@ -86,6 +86,39 @@ body {
 }
 
 footer {
+    transform: translate(0, 40%);
     background: black;
     height: 25vh;
+}
+
+footer h3 {
+    color: white;
+    text-align: left;
+    padding-top: 1.5%;
+}
+
+footer h3::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translate(-45vw, 5vh);
+    width: 85%;
+    height: 0.3%;
+    background: #83C5BE;
+}
+
+#adress {
+    color: white !important;
+    position: absolute;
+    left: 15%;
+}
+
+#contacts {
+    color: white;
+    position: absolute;
+    left: 65%;
+}
+
+footer p {
+    padding-top: 2%;
 }
