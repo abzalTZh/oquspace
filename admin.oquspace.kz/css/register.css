@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EDF6F9;
+}
+
+.log-in-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+img {
+    width: 28vw;
+}
+
+.login-box {
+    padding: 40px;
+    background: #006D77;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 15px;
+    opacity: 0.7;
+}
+
+input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.login-box input:focus~label,
+.login-box input:valid~label {
+    top: -20px;
+    left: 0;
+    color: #E29578;
+    font-size: 12px;
+}
+
+a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #E29578;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+}
+
+a:hover {
+    background: #E29578;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #E29578, 0 0 25px #E29578, 0 0 50px #E29578, 0 0 100px #E29578;
+}
+
+.btttn {
+    background: transparent;
+    border: 0px;
+    font-size: larger;
+    font-weight: bold;
+    color: white;
+}
