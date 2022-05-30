@@ -1,59 +1,65 @@
-<?php require_once("includes/connection.php"); ?>
-
 <?php
-if(isset($_SESSION["session_username"])){
-	// вывод "Session is set"; // в целях проверки
-	header("Location: profile.php");
-	}
-
-// Функция для генерации случайной строки
-function generateCode($length=6) {
-    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789";
-    $code = "";
-    $clen = strlen($chars) - 1;
-    while (strlen($code) < $length) {
-            $code .= $chars[mt_rand(0,$clen)];
-    }
-    return $code;
-}
-
-// Соединямся с БД
-$link=mysqli_connect("localhost", "root", "", "oqu_space");
-
-if(isset($_POST['submit']))
-{
-    // Вытаскиваем из БД запись, у которой логин равняеться введенному
-    $query = mysqli_query($link,"SELECT id, password FROM users WHERE username='".mysqli_real_escape_string($link,$_POST['username'])."' LIMIT 1");
-    $data = mysqli_fetch_assoc($query);
-
-    // Сравниваем пароли
-    if($data['password'] === md5(md5($_POST['password'])))
-    {
-        // Генерируем случайное число и шифруем его
-        $hash = md5(generateCode(10));
-
-        if(!empty($_POST['not_attach_ip']))
-        {
-            // Если пользователя выбрал привязку к IP
-            // Переводим IP в строку
-            $insip = ", user_ip=INET_ATON('".$_SERVER['REMOTE_ADDR']."')";
+session_start();
+require_once("includes/connect.php");
+require_once("includes/if-loggedin.php");
+if(isset($_POST) & !empty($_POST)){
+    // PHP Form Validations
+    if(empty($_POST['username'])){ $errors[]="User Name / E-Mail field is Required"; }
+    if(empty($_POST['password'])){ $errors[]="Password field is Required"; }
+    // CSRF Token Validation
+    if(isset($_POST['csrf_token'])){
+        if($_POST['csrf_token'] === $_SESSION['csrf_token']){
+        }else{
+            $errors[] = "Problem with CSRF Token Validation";
         }
-
-        // Записываем в БД новый хеш авторизации и IP
-        mysqli_query($link, "UPDATE users SET user_hash='".$hash."' ".$insip." WHERE id='".$data['user_id']."'");
-
-        // Ставим куки
-        setcookie("id", $data['id'], time()+60*60*24*30, "/");
-        setcookie("hash", $hash, time()+60*60*24*30, "/", null, null, true); // httponly !!!
-
-        // Переадресовываем браузер на страницу проверки нашего скрипта
-        header("Location: profile.php"); exit();
     }
-    else
-    {
-        print "Username or password is incorrect";
+    // CSRF Token Time Validation
+    $max_time = 60*60*24; // in seconds
+    if(isset($_SESSION['csrf_token_time'])){
+        $token_time = $_SESSION['csrf_token_time'];
+        if(($token_time + $max_time) >= time() ){
+        }else{
+            $errors[] = "CSRF Token Expired";
+            unset($_SESSION['csrf_token']);
+            unset($_SESSION['csrf_token_time']);
+        }
     }
-}
+
+    if(empty($errors)){
+        // Check the Login Credentials
+        $sql = "SELECT * FROM users WHERE ";
+        if(filter_var($_POST['username'], FILTER_VALIDATE_EMAIL)){
+            $sql .= "email=?";
+        }else{
+            $sql .= "username=?";
+        }
+        $result = $db->prepare($sql);
+        $result->execute(array($_POST['username']));
+        $count = $result->rowCount();
+        $res = $result->fetch(PDO::FETCH_ASSOC);
+        if($count == 1){
+            // Compare the password with password hash
+            if(password_verify($_POST['password'], $res['password'])){
+                // regenerate session id
+                session_regenerate_id();
+                $_SESSION['login'] = true;
+                $_SESSION['id'] = $res['id'];
+                $_SESSION['last_login'] = time();
+
+                // redirect the user to members area/dashboard page
+                header("location: dashboard.php");
+            }else{
+                $errors[] = "User Name / E-Mail & Password Combination not Working";
+            }
+        }else{
+            $errors[] = "User Name / E-Mail not Valid";
+        }
+    }
+} 
+// 1. Create CSRF token
+$token = md5(uniqid(rand(), TRUE));
+$_SESSION['csrf_token'] = $token;
+$_SESSION['csrf_token_time'] = time();
 ?>
 
 <html>
@@ -75,10 +81,20 @@ if(isset($_POST['submit']))
 <body>
 
     <div class="login-box">
+        <?php
+            if(!empty($errors)){
+                echo "<div class='alert alert-danger'>";
+                foreach ($errors as $error) {
+                    echo "<span class='glyphicon glyphicon-remove'></span>&nbsp;".$error."<br>";
+                }
+                echo "</div>";
+            }
+        ?>
         <h1>Log In</h1>
         <form action=" " method="post">
+        <input type="hidden" name="csrf_token" value="<?php echo $token; ?>">
             <div class="user-box">
-            <input class="input" id="username" name="username" size="20" type="text" value="">
+            <input class="input" id="username" name="username" size="20" type="text" value="<?php if(isset($_POST['username'])){ echo $_POST['username']; } ?>">
                 <label>Username:</label>
             </div>
             <br>

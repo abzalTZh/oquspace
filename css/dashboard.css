@@ -94,6 +94,32 @@ body {
     font-size: 0.8rem;
 }
 
+.log-out-btn {
+    height: 170%;
+    width: 40%;
+    border: none;
+    border-radius: 5px;
+    background-color: #006D77;
+    transform: translate(600%, -100%);
+    color: white;
+    transition: .5s;
+}
+
+.log-out-btn:hover {
+    background: rgb(162, 229, 229);
+    border-radius: 5px;
+    box-shadow: 0 0 5px #fff, 0 0 25px #fff, 0 0 50px #fff, 0 0 100px #fff;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.log-out-btn a:hover {
+    color: white;
+}
+
 .course-container {
     background: white;
     width: 20%;
@@ -1509,4 +1535,43 @@ a.fc-more:hover {
 
 .fc-unthemed .fc-list-empty {
     background-color: #eee
+}
+
+footer {
+    position: relative;
+    background: black;
+    height: 25vh;
+    margin-top: 2%;
+}
+
+footer h3 {
+    color: white;
+    text-align: left;
+    padding-top: 1.5%;
+}
+
+footer h3::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translate(-45vw, 5vh);
+    width: 85%;
+    height: 0.3%;
+    background: #83C5BE;
+}
+
+#adress {
+    color: white !important;
+    position: absolute;
+    left: 15%;
+}
+
+#contacts {
+    color: white;
+    position: absolute;
+    left: 65%;
+}
+
+footer p {
+    padding-top: 2%;
 }

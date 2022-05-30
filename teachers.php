@@ -25,10 +25,10 @@
                             <a class="nav-link" href="courses.php">Courses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
+                            <a class="nav-link" href="aboutus.php">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="dashboard.php">Profile</a>
                         </li>
                     </ul>
                 </div>

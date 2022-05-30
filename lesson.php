@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <title>Lesson Page</title>
+    <title>Maths Course</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/lesson.css"/>
     <link rel="shortcut icon" href="img-s/oquspace.ico" type="image/x-icon" />
@@ -96,7 +96,7 @@
                 <div class="col-md course-col">
                 <div class="sidenav">
                     <a href="index.php">Home</a>
-                    <a href="#about">Course name</a>
+                    <a href="#about">Maths</a>
                     <button type="button" class="collapsible" id="pre-algebra">Pre-algebra</button>
                         <div class="content">
                             <a href="#arithmetic-reasoning"><button type="button" id="lesson1.1" class="col-content">Lesson 1.1</button></a>
